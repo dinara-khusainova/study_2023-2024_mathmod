@@ -1,0 +1,178 @@
+\begin{frame}{Цель работы}
+\phantomsection\label{ux446ux435ux43bux44c-ux440ux430ux431ux43eux442ux44b}
+Изучить основы языка программирования Julia
+\end{frame}
+
+\begin{frame}{Задание}
+\phantomsection\label{ux437ux430ux434ux430ux43dux438ux435}
+\begin{itemize}
+\tightlist
+\item
+  Изучить основы языков программирования Julia
+\item
+  Освоить библиотеки этих языков, которые используются для построения
+  графиков и решения дифференциальных уравнений
+\item
+  Решить задачу о погоне.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Расчет своего варианта}
+\phantomsection\label{ux440ux430ux441ux447ux435ux442-ux441ux432ux43eux435ux433ux43e-ux432ux430ux440ux438ux430ux43dux442ux430}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth,height=\textheight]{image/1.png}
+\caption{Номер варианта}\label{fig:001}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Решение задачи}
+\phantomsection\label{ux440ux435ux448ux435ux43dux438ux435-ux437ux430ux434ux430ux447ux438}
+\[ t = {{x }\over{v}} \] \[ t = {{17,7-x}\over{3,8 v}} \]
+\[ t = {{17,7+x}\over{3,8 v}} \]
+\end{frame}
+
+\begin{frame}{Решение задачи}
+\phantomsection\label{ux440ux435ux448ux435ux43dux438ux435-ux437ux430ux434ux430ux447ux438-1}
+Из этих уравнений получаем объедиение двух уравнений:
+
+\[ \left[ \begin{array}{cl}
+{{x}\over{v}} = {{17,7-x}\over{3,8 v}}\\
+{{x}\over{v}} = {{17,7+x}\over{3,8 v}}
+\end{array} \right. \]
+\end{frame}
+
+\begin{frame}{Решение задачи}
+\phantomsection\label{ux440ux435ux448ux435ux43dux438ux435-ux437ux430ux434ux430ux447ux438-2}
+Решая это, получаем два значения для x: \[ x1 = {{14,0125}} \]
+\[ x2 = {{24,0214}} \]
+\end{frame}
+
+\begin{frame}{Решение задачи}
+\phantomsection\label{ux440ux435ux448ux435ux43dux438ux435-ux437ux430ux434ux430ux447ux438-3}
+\[ v_\tau – тангенциальная скорость  \] \[ v – радиальная скорость\]
+\[ v = {dr\over dt} \]
+\[ v_\tau = {{\sqrt{((3,8*v)^2-v^2)}}} = {\sqrt{70}*v \over{5}}   \]
+\end{frame}
+
+\begin{frame}{Решение задачи}
+\phantomsection\label{ux440ux435ux448ux435ux43dux438ux435-ux437ux430ux434ux430ux447ux438-4}
+\[ \left\{ \begin{array}{cl}
+{dr\over dt} = v \\
+r{d\theta\over dt} = {\sqrt{70}*v \over{5}} 
+\end{array} \right. \]
+\end{frame}
+
+\begin{frame}{Решение задачи}
+\phantomsection\label{ux440ux435ux448ux435ux43dux438ux435-ux437ux430ux434ux430ux447ux438-5}
+\[ \left\{ \begin{array}{cl}
+\theta_0 = 0 \\
+r_0 = x_1 = {{14,0125}}
+\end{array} \right. \]
+
+или
+\end{frame}
+
+\begin{frame}{Решение задачи}
+\phantomsection\label{ux440ux435ux448ux435ux43dux438ux435-ux437ux430ux434ux430ux447ux438-6}
+\[ \left\{ \begin{array}{cl}
+\theta_0 = -\pi \\
+r_0 = x_2 = {{24,0214}}
+\end{array} \right. \]
+\end{frame}
+
+\begin{frame}{Итоговое уравнение}
+\phantomsection\label{ux438ux442ux43eux433ux43eux432ux43eux435-ux443ux440ux430ux432ux43dux435ux43dux438ux435}
+\[ {dr\over d\theta} = {5r\over\sqrt{70}} \]
+\end{frame}
+
+\begin{frame}{Моделирование с помощью Julia. Скачивание}
+\phantomsection\label{ux43cux43eux434ux435ux43bux438ux440ux43eux432ux430ux43dux438ux435-ux441-ux43fux43eux43cux43eux449ux44cux44e-julia.-ux441ux43aux430ux447ux438ux432ux430ux43dux438ux435}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth,height=\textheight]{image/5.png}
+\caption{Julia}\label{fig:005}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Создаем файл lab2.jl и запускаем Julia}
+\phantomsection\label{ux441ux43eux437ux434ux430ux435ux43c-ux444ux430ux439ux43b-lab2.jl-ux438-ux437ux430ux43fux443ux441ux43aux430ux435ux43c-julia}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth,height=\textheight]{image/6.png}
+\caption{lab2.jl и запуск}\label{fig:006}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Запуск Julia}
+\phantomsection\label{ux437ux430ux43fux443ux441ux43a-julia}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth,height=\textheight]{image/7.png}
+\caption{Процесс запуска}\label{fig:007}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Скачиваем необходимые для работы пакеты b проверяем их
+наличие}
+\phantomsection\label{ux441ux43aux430ux447ux438ux432ux430ux435ux43c-ux43dux435ux43eux431ux445ux43eux434ux438ux43cux44bux435-ux434ux43bux44f-ux440ux430ux431ux43eux442ux44b-ux43fux430ux43aux435ux442ux44b-b-ux43fux440ux43eux432ux435ux440ux44fux435ux43c-ux438ux445-ux43dux430ux43bux438ux447ux438ux435}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth,height=\textheight]{image/8.png}
+\caption{Plots}\label{fig:008}
+\end{figure}
+\end{frame}
+
+\begin{frame}{DifferentialEquations}
+\phantomsection\label{differentialequations}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth,height=\textheight]{image/9.png}
+\caption{DifferentialEquations}\label{fig:009}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Проверяем}
+\phantomsection\label{ux43fux440ux43eux432ux435ux440ux44fux435ux43c}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth,height=\textheight]{image/10.png}
+\caption{Using}\label{fig:010}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Запуск кода}
+\phantomsection\label{ux437ux430ux43fux443ux441ux43a-ux43aux43eux434ux430}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth,height=\textheight]{image/11.png}
+\caption{Запуск кода}\label{fig:011}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Просмотр результата работы. Случай 1}
+\phantomsection\label{ux43fux440ux43eux441ux43cux43eux442ux440-ux440ux435ux437ux443ux43bux44cux442ux430ux442ux430-ux440ux430ux431ux43eux442ux44b.-ux441ux43bux443ux447ux430ux439-1}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth,height=\textheight]{image/lab2_01.png}
+\caption{Случай 1}\label{fig:011}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Случай 2}
+\phantomsection\label{ux441ux43bux443ux447ux430ux439-2}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth,height=\textheight]{image/lab2_02.png}
+\caption{Случай 2}\label{fig:011}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Выводы}
+\phantomsection\label{ux432ux44bux432ux43eux434ux44b}
+Были изучены основы языков программирования Julia и OpenModelica.
+Освоены библиотеки этих языков, которые используются для построения
+графиков и решения дифференциальных уравнений. Поскольку OpenModelica не
+работает с полярными координатами, она пока что не была использована в
+данной лабораторной работе.
+\end{frame}
