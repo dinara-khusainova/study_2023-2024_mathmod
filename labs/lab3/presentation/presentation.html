@@ -1,0 +1,212 @@
+\begin{frame}{Цель работы}
+\phantomsection\label{ux446ux435ux43bux44c-ux440ux430ux431ux43eux442ux44b}
+Изучить модели боевых действий Ланчестера. Применить их на практике для
+решения задания лабораторной работы, использовав Julia и OpenModelica.
+\end{frame}
+
+\begin{frame}{Регулярная армия X против регулярной армии Y}
+\phantomsection\label{ux440ux435ux433ux443ux43bux44fux440ux43dux430ux44f-ux430ux440ux43cux438ux44f-x-ux43fux440ux43eux442ux438ux432-ux440ux435ux433ux443ux43bux44fux440ux43dux43eux439-ux430ux440ux43cux438ux438-y}
+\[ {dx\over {dt}} = -a(t)x(t)-b(t)y(t)+P(t) \]
+\[ {dy\over {dt}} = -c(t)x(t)-h(t)y(t)+Q(t) \]
+\end{frame}
+
+\begin{frame}{Регулярная армия против партизанской армии}
+\phantomsection\label{ux440ux435ux433ux443ux43bux44fux440ux43dux430ux44f-ux430ux440ux43cux438ux44f-ux43fux440ux43eux442ux438ux432-ux43fux430ux440ux442ux438ux437ux430ux43dux441ux43aux43eux439-ux430ux440ux43cux438ux438}
+\[ {dx\over {dt}} = -a(t)x(t)-b(t)y(t)+P(t) \]
+\[ {dy\over {dt}} = -c(t)x(t)y(t)-h(t)y(t)+Q(t) \]
+\end{frame}
+
+\begin{frame}{Решение с помощью программ. Julia}
+\phantomsection\label{ux440ux435ux448ux435ux43dux438ux435-ux441-ux43fux43eux43cux43eux449ux44cux44e-ux43fux440ux43eux433ux440ux430ux43cux43c.-julia}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth,height=\textheight]{image/1.png}
+\caption{Создание файла lab3.jl}\label{fig:001}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{Код программы Julia}
+\phantomsection\label{ux43aux43eux434-ux43fux440ux43eux433ux440ux430ux43cux43cux44b-julia}
+\begin{verbatim}
+using Plots;
+
+using DifferentialEquations;
+
+function first(du, u, p, t)
+    du[1] = - 0.354*u[1] - 0.765*u[2] + abs(sin(t + 10))
+    du[2] = - 0.679*u[1] - 0.845*u[2] + abs(cos(t + 15))
+end
+
+function second(du, u, p, t)
+    du[1] = - 0.505*u[1] - 0.77*u[2] + sin(2*t)+2
+    du[2] = - 0.6*u[1]*u[2] - 0.404*u[2] + cos(5*t)+2
+end
+
+const people = Float64[87700, 91400]
+const prom1 = [0.0, 3.0]
+const prom2 = [0.0, 0.0007]
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Код программы Julia}
+\phantomsection\label{ux43aux43eux434-ux43fux440ux43eux433ux440ux430ux43cux43cux44b-julia-1}
+\begin{verbatim}
+prob1 = ODEProblem(first, people, prom1)
+prob2 = ODEProblem(second, people, prom2)
+
+sol1 = solve(prob1, dtmax=0.1)
+sol2 = solve(prob2, dtmax=0.000001)
+
+A1 = [u[1] for u in sol1.u]
+A2 = [u[2] for u in sol1.u]
+T1 = [t for t in sol1.t]
+A3 = [u[1] for u in sol2.u]
+A4 = [u[2] for u in sol2.u]
+T2 = [t for t in sol2.t]
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Код программы Julia}
+\phantomsection\label{ux43aux43eux434-ux43fux440ux43eux433ux440ux430ux43cux43cux44b-julia-2}
+\begin{verbatim}
+plt1 = plot(dpi = 300, legend= true, bg =:white)
+plot!(plt1, xlabel="Время", ylabel="Численность", title="Модель боевых действий - случай 1", legend=:outerbottom)
+plot!(plt1, T1, A1, label="Численность армии X", color =:blue)
+plot!(plt1, T1, A2, label="Численность армии Y", color =:green)
+savefig(plt1, "lab03_1.png")
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Код программы Julia}
+\phantomsection\label{ux43aux43eux434-ux43fux440ux43eux433ux440ux430ux43cux43cux44b-julia-3}
+\begin{verbatim}
+plt2 = plot(dpi = 1200, legend= true, bg =:white)
+plot!(plt2, xlabel="Время", ylabel="Численность", title="Модель боевых действий - случай 2", legend=:outerbottom)
+plot!(plt2, T2, A3, label="Численность армии X", color =:blue)
+plot!(plt2, T2, A4, label="Численность армии Y", color =:green)
+savefig(plt2, "lab03_2.png")
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{Запуск}
+\phantomsection\label{ux437ux430ux43fux443ux441ux43a}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth,height=\textheight]{image/2.png}
+\caption{Запуск julia}\label{fig:002}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Результат работы с Julia. График для первого случая}
+\phantomsection\label{ux440ux435ux437ux443ux43bux44cux442ux430ux442-ux440ux430ux431ux43eux442ux44b-ux441-julia.-ux433ux440ux430ux444ux438ux43a-ux434ux43bux44f-ux43fux435ux440ux432ux43eux433ux43e-ux441ux43bux443ux447ux430ux44f}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth,height=\textheight]{image/lab03_1.png}
+\caption{Модель боевых действий между регулярными
+войсками}\label{fig:003}
+\end{figure}
+\end{frame}
+
+\begin{frame}{График для второго случая}
+\phantomsection\label{ux433ux440ux430ux444ux438ux43a-ux434ux43bux44f-ux432ux442ux43eux440ux43eux433ux43e-ux441ux43bux443ux447ux430ux44f}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth,height=\textheight]{image/lab03_2.png}
+\caption{Модель боевых действий между регулярной армией и партизанской
+армией}\label{fig:003}
+\end{figure}
+\end{frame}
+
+\begin{frame}{OpenModelica}
+\phantomsection\label{openmodelica}
+Скачаем OpenModelica
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth,height=\textheight]{image/4.png}
+\caption{OpenModelica}\label{fig:002}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Откроем OpenModelica и создадим модель для первого случая}
+\phantomsection\label{ux43eux442ux43aux440ux43eux435ux43c-openmodelica-ux438-ux441ux43eux437ux434ux430ux434ux438ux43c-ux43cux43eux434ux435ux43bux44c-ux434ux43bux44f-ux43fux435ux440ux432ux43eux433ux43e-ux441ux43bux443ux447ux430ux44f}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth,height=\textheight]{image/5.png}
+\caption{OpenModelica}\label{fig:002}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{Код для первого случая}
+\phantomsection\label{ux43aux43eux434-ux434ux43bux44f-ux43fux435ux440ux432ux43eux433ux43e-ux441ux43bux443ux447ux430ux44f}
+\begin{verbatim}
+model lab3_1
+Real x;
+Real y;
+Real a = 0.354;
+Real b = 0.765;
+Real c = 0.679;
+Real h = 0.845;
+Real t = time;
+initial equation
+x = 87700;
+y = 91400;
+equation
+der(x)=-a*x - b*y +abs(sin(t+10));
+der(y)=-c*x - h*y +abs(cos(t+15));
+end lab3_1;
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Код для второго случая}
+\phantomsection\label{ux43aux43eux434-ux434ux43bux44f-ux432ux442ux43eux440ux43eux433ux43e-ux441ux43bux443ux447ux430ux44f}
+\begin{verbatim}
+model lab3_2
+Real x;
+Real y;
+Real a = 0.505;
+Real b = 0.77;
+Real c = 0.6;
+Real h = 0.404;
+Real t = time;
+initial equation
+x = 87700;
+y = 91400;
+equation
+der(x)=-a*x - b*y +sin(2*t) + 2;
+der(y)=-c*x*y - h*y +cos(5*t) + 2;
+end lab3_2;
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{Результат работы OpenModelica для модели боевых действий
+между регулярными войсками}
+\phantomsection\label{ux440ux435ux437ux443ux43bux44cux442ux430ux442-ux440ux430ux431ux43eux442ux44b-openmodelica-ux434ux43bux44f-ux43cux43eux434ux435ux43bux438-ux431ux43eux435ux432ux44bux445-ux434ux435ux439ux441ux442ux432ux438ux439-ux43cux435ux436ux434ux443-ux440ux435ux433ux443ux43bux44fux440ux43dux44bux43cux438-ux432ux43eux439ux441ux43aux430ux43cux438}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth,height=\textheight]{image/lab3_1openmodelica.png}
+\caption{Модель боевых действий между регулярными
+войсками}\label{fig:003}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Результат работы OpenModelica для модели боевых действий
+между регулярной армией и партизанской армией}
+\phantomsection\label{ux440ux435ux437ux443ux43bux44cux442ux430ux442-ux440ux430ux431ux43eux442ux44b-openmodelica-ux434ux43bux44f-ux43cux43eux434ux435ux43bux438-ux431ux43eux435ux432ux44bux445-ux434ux435ux439ux441ux442ux432ux438ux439-ux43cux435ux436ux434ux443-ux440ux435ux433ux443ux43bux44fux440ux43dux43eux439-ux430ux440ux43cux438ux435ux439-ux438-ux43fux430ux440ux442ux438ux437ux430ux43dux441ux43aux43eux439-ux430ux440ux43cux438ux435ux439}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth,height=\textheight]{image/lab3_2openmodelica.png}
+\caption{Модель боевых действий между регулярной армией и партизанской
+армией}\label{fig:003}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Выводы}
+\phantomsection\label{ux432ux44bux432ux43eux434ux44b}
+По итогам лабораторной работы я построила по две модели на языках Julia
+и OpenModelica. В ходе проделанной работы можно сделать вывод, что
+OpenModelica лучше приспособлен для моделирование процессов, протекающих
+во времени. Построение моделей боевых действий на языке OpenModelica
+занимает гораздо меньше строк и времени, чем аналогичное построение на
+языке Julia.
+\end{frame}
