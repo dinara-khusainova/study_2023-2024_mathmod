@@ -1,0 +1,120 @@
+\begin{frame}{Цель работы}
+\phantomsection\label{ux446ux435ux43bux44c-ux440ux430ux431ux43eux442ux44b}
+Изучить жесткую модель хищник-жертва и построить эту модель.
+\end{frame}
+
+\begin{frame}{Теоретическое введение}
+\phantomsection\label{ux442ux435ux43eux440ux435ux442ux438ux447ux435ux441ux43aux43eux435-ux432ux432ux435ux434ux435ux43dux438ux435}
+\begin{itemize}
+\tightlist
+\item
+  Модель Лотки---Вольтерры --- модель взаимодействия двух видов типа
+  «хищник --- жертва», названная в честь её авторов, которые предложили
+  модельные уравнения независимо друг от друга. Такие уравнения можно
+  использовать для моделирования систем «хищник --- жертва», «паразит
+  --- хозяин», конкуренции и других видов взаимодействия между двумя
+  видами.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Скорость роста численности жертв уменьшается
+пропорционально численности хищников}
+\phantomsection\label{ux441ux43aux43eux440ux43eux441ux442ux44c-ux440ux43eux441ux442ux430-ux447ux438ux441ux43bux435ux43dux43dux43eux441ux442ux438-ux436ux435ux440ux442ux432-ux443ux43cux435ux43dux44cux448ux430ux435ux442ux441ux44f-ux43fux440ux43eux43fux43eux440ux446ux438ux43eux43dux430ux43bux44cux43dux43e-ux447ux438ux441ux43bux435ux43dux43dux43eux441ux442ux438-ux445ux438ux449ux43dux438ux43aux43eux432}
+\[
+ \begin{cases}
+    \frac{dx}{dt} = (-ax(t) + by(t)x(t))
+    \\   
+    \frac{dy}{dt} = (cy(t) - dy(t)x(t))
+ \end{cases}
+\]
+\end{frame}
+
+\begin{frame}{Для модели «хищник-жертва»}
+\phantomsection\label{ux434ux43bux44f-ux43cux43eux434ux435ux43bux438-ux445ux438ux449ux43dux438ux43a-ux436ux435ux440ux442ux432ux430}
+\[
+ \begin{cases}
+    \frac{dx}{dt} = -0.13*x(t) + 0.041*y(t)x(t)
+    \\   
+    \frac{dy}{dt} = 0.31*y(t) -0.042*y(t)x(t)
+ \end{cases}
+\] Надо было построить график зависимости численности хищников от
+численности жертв,а также графики изменения численности хищников и
+численности жертв при следующих начальных условиях: \(x_0=7, y_0=20\).
+Найти стационарное состояние системы.
+\end{frame}
+
+\begin{frame}{Julia. График численности хищников от численности жертв}
+\phantomsection\label{julia.-ux433ux440ux430ux444ux438ux43a-ux447ux438ux441ux43bux435ux43dux43dux43eux441ux442ux438-ux445ux438ux449ux43dux438ux43aux43eux432-ux43eux442-ux447ux438ux441ux43bux435ux43dux43dux43eux441ux442ux438-ux436ux435ux440ux442ux432}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth,height=\textheight]{image/lab5_1.png}
+\caption{График численности хищников от численности
+жертв}\label{fig:001}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Julia. График численности жертв и хищников от времени}
+\phantomsection\label{julia.-ux433ux440ux430ux444ux438ux43a-ux447ux438ux441ux43bux435ux43dux43dux43eux441ux442ux438-ux436ux435ux440ux442ux432-ux438-ux445ux438ux449ux43dux438ux43aux43eux432-ux43eux442-ux432ux440ux435ux43cux435ux43dux438}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth,height=\textheight]{image/lab5_2.png}
+\caption{График численности жертв и хищников от времени}\label{fig:002}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Julia. Стационарное состояние}
+\phantomsection\label{julia.-ux441ux442ux430ux446ux438ux43eux43dux430ux440ux43dux43eux435-ux441ux43eux441ux442ux43eux44fux43dux438ux435}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth,height=\textheight]{image/lab5_3.png}
+\caption{Стационарное состояние}\label{fig:003}
+\end{figure}
+\end{frame}
+
+\begin{frame}{OpenModelica. График численности хищников от численности
+жертв}
+\phantomsection\label{openmodelica.-ux433ux440ux430ux444ux438ux43a-ux447ux438ux441ux43bux435ux43dux43dux43eux441ux442ux438-ux445ux438ux449ux43dux438ux43aux43eux432-ux43eux442-ux447ux438ux441ux43bux435ux43dux43dux43eux441ux442ux438-ux436ux435ux440ux442ux432}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth,height=\textheight]{image/2.png}
+\caption{График численности хищников от численности
+жертв}\label{fig:001}
+\end{figure}
+\end{frame}
+
+\begin{frame}{OpenModelica. График численности жертв и хищников от
+времени}
+\phantomsection\label{openmodelica.-ux433ux440ux430ux444ux438ux43a-ux447ux438ux441ux43bux435ux43dux43dux43eux441ux442ux438-ux436ux435ux440ux442ux432-ux438-ux445ux438ux449ux43dux438ux43aux43eux432-ux43eux442-ux432ux440ux435ux43cux435ux43dux438}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth,height=\textheight]{image/3.png}
+\caption{График численности жертв и хищников от времени}\label{fig:002}
+\end{figure}
+\end{frame}
+
+\begin{frame}{OpenModelica. Стационарное состояние}
+\phantomsection\label{openmodelica.-ux441ux442ux430ux446ux438ux43eux43dux430ux440ux43dux43eux435-ux441ux43eux441ux442ux43eux44fux43dux438ux435}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth,height=\textheight]{image/4.png}
+\caption{Стационарное состояние}\label{fig:003}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Выводы}
+\phantomsection\label{ux432ux44bux432ux43eux434ux44b}
+Изучили жесткую модель хищник-жертва и построить эту модель.
+\end{frame}
+
+\begin{frame}{Список литературы. Библиография}
+\phantomsection\label{ux441ux43fux438ux441ux43eux43a-ux43bux438ux442ux435ux440ux430ux442ux443ux440ux44b.-ux431ux438ux431ux43bux438ux43eux433ux440ux430ux444ux438ux44f}
+{[}1{]} Документация по Julia: https://docs.julialang.org/en/v1/
+
+{[}2{]} Документация по OpenModelica: https://openmodelica.org/
+
+{[}3{]} Решение дифференциальных уравнений:
+https://www.wolframalpha.com/
+
+{[}4{]} Модель Лотки---Вольтерры:
+https://math-it.petrsu.ru/users/semenova/MathECO/Lections/Lotka\_Volterra.pdf
+\end{frame}
