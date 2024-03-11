@@ -1,0 +1,128 @@
+\begin{frame}{Цель работы}
+\phantomsection\label{ux446ux435ux43bux44c-ux440ux430ux431ux43eux442ux44b}
+Изучить и построить модель эпидемии.
+\end{frame}
+
+\begin{frame}{Теоретическое введение}
+\phantomsection\label{ux442ux435ux43eux440ux435ux442ux438ux447ux435ux441ux43aux43eux435-ux432ux432ux435ux434ux435ux43dux438ux435}
+Скорость изменения числа \(S(t)\) меняется по следующему закону:
+
+\[
+\frac{dS}{dt}=
+ \begin{cases}
+    -\alpha S &\text{,если $I(t) > I^*$}
+    \\   
+    0 &\text{,если $I(t) \leq I^*$}
+ \end{cases}
+\]
+\end{frame}
+
+\begin{frame}{Скорость изменения числа инфекционных особей представляет
+разность за единицу времени между заразившимися и теми, кто уже болеет и
+лечится}
+\phantomsection\label{ux441ux43aux43eux440ux43eux441ux442ux44c-ux438ux437ux43cux435ux43dux435ux43dux438ux44f-ux447ux438ux441ux43bux430-ux438ux43dux444ux435ux43aux446ux438ux43eux43dux43dux44bux445-ux43eux441ux43eux431ux435ux439-ux43fux440ux435ux434ux441ux442ux430ux432ux43bux44fux435ux442-ux440ux430ux437ux43dux43eux441ux442ux44c-ux437ux430-ux435ux434ux438ux43dux438ux446ux443-ux432ux440ux435ux43cux435ux43dux438-ux43cux435ux436ux434ux443-ux437ux430ux440ux430ux437ux438ux432ux448ux438ux43cux438ux441ux44f-ux438-ux442ux435ux43cux438-ux43aux442ux43e-ux443ux436ux435-ux431ux43eux43bux435ux435ux442-ux438-ux43bux435ux447ux438ux442ux441ux44f}
+\[
+\frac{dI}{dt}=
+ \begin{cases}
+    \alpha S -\beta I &\text{, если $I(t) > I^*$}
+    \\   
+    -\beta I &\text{, если $I(t) \leq I^*$}
+ \end{cases}
+\]
+
+А скорость изменения выздоравливающих особей (при этом приобретающие
+иммунитет к болезни):
+
+\[\frac{dR}{dt} = \beta I\]
+\end{frame}
+
+\begin{frame}{Задачи}
+\phantomsection\label{ux437ux430ux434ux430ux447ux438}
+Построить графики изменения числа особей в каждой из трех групп \(S\),
+\(I\), \(R\). Рассмотреть, как будет протекать эпидемия в случаях:
+
+\begin{enumerate}
+\item
+  \(I(0)\leq I^*\)
+\item
+  \(I(0)>I^*\)
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Вариант 54}
+\phantomsection\label{ux432ux430ux440ux438ux430ux43dux442-54}
+На одном острове вспыхнула эпидемия. Известно, что из всех проживающих
+на острове \((N=8439)\) в момент начала эпидемии \((t=0)\) число
+заболевших людей (являющихся распространителями инфекции) \(I(0)=86\), А
+число здоровых людей с иммунитетом к болезни \(R(0)=25\). Таким образом,
+число людей восприимчивых к болезни, но пока здоровых, в начальный
+момент времени \(S(0)=N-I(0)-R(0)\). Постройте графики изменения числа
+особей в каждой из трех групп.
+
+Рассмотрите, как будет протекать эпидемия в случае:
+
+\begin{enumerate}
+\item
+  \(I(0)\leq I^*\)
+\item
+  \(I(0)>I^*\)
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Julia. Зараженных меньше критического значения}
+\phantomsection\label{julia.-ux437ux430ux440ux430ux436ux435ux43dux43dux44bux445-ux43cux435ux43dux44cux448ux435-ux43aux440ux438ux442ux438ux447ux435ux441ux43aux43eux433ux43e-ux437ux43dux430ux447ux435ux43dux438ux44f}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth,height=\textheight]{image/lab6_1.png}
+\caption{График при условии, что число зараженных меньше критического
+значения}\label{fig:001}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Julia. Зараженных больше критического значения}
+\phantomsection\label{julia.-ux437ux430ux440ux430ux436ux435ux43dux43dux44bux445-ux431ux43eux43bux44cux448ux435-ux43aux440ux438ux442ux438ux447ux435ux441ux43aux43eux433ux43e-ux437ux43dux430ux447ux435ux43dux438ux44f}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth,height=\textheight]{image/lab6_2.png}
+\caption{График при условии, что число зараженных больше критического
+значения}\label{fig:002}
+\end{figure}
+\end{frame}
+
+\begin{frame}{OpenModelica. Зараженных меньше критического значения}
+\phantomsection\label{openmodelica.-ux437ux430ux440ux430ux436ux435ux43dux43dux44bux445-ux43cux435ux43dux44cux448ux435-ux43aux440ux438ux442ux438ux447ux435ux441ux43aux43eux433ux43e-ux437ux43dux430ux447ux435ux43dux438ux44f}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth,height=\textheight]{image/1.png}
+\caption{OpenModelica. График при условии, что число зараженных меньше
+критического значения}\label{fig:001}
+\end{figure}
+\end{frame}
+
+\begin{frame}{OpenModelica. Зараженных больше критического значения}
+\phantomsection\label{openmodelica.-ux437ux430ux440ux430ux436ux435ux43dux43dux44bux445-ux431ux43eux43bux44cux448ux435-ux43aux440ux438ux442ux438ux447ux435ux441ux43aux43eux433ux43e-ux437ux43dux430ux447ux435ux43dux438ux44f}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth,height=\textheight]{image/2.png}
+\caption{OpenModelica. График при условии, что число зараженных больше
+критического значения}\label{fig:002}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Выводы}
+\phantomsection\label{ux432ux44bux432ux43eux434ux44b}
+Изучили и построили модель эпидемии.
+\end{frame}
+
+\begin{frame}{Список литературы. Библиография}
+\phantomsection\label{ux441ux43fux438ux441ux43eux43a-ux43bux438ux442ux435ux440ux430ux442ux443ux440ux44b.-ux431ux438ux431ux43bux438ux43eux433ux440ux430ux444ux438ux44f}
+{[}1{]} Документация по Julia: https://docs.julialang.org/en/v1/
+
+{[}2{]} Документация по OpenModelica: https://openmodelica.org/
+
+{[}3{]} Решение дифференциальных уравнений:
+https://www.wolframalpha.com/
+
+{[}4{]} Конструирование эпидемиологических моделей:
+https://habr.com/ru/post/551682/
+\end{frame}
